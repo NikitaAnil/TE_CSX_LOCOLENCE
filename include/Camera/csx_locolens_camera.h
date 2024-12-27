@@ -6,7 +6,7 @@
 #include <mutex>
 #include <thread>
 
-#include "ring_buffer.h"
+#include "const_config.h"
 #include "Velocity/csx_locolens_velocity.h"
 
 class CameraInterface {

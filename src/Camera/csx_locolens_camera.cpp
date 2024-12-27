@@ -11,8 +11,8 @@ class VelocityInterface;
 CameraInterface::CameraInterface()
 {
     std::cout << "This is CameraInterface Constructor";
-    m_direction_flag_id = m_velocity_ptr -> getDirection();
-    m_speed_flag_id = m_velocity_ptr -> getSpeed();
+    //m_direction_flag_id = m_velocity_ptr -> getDirection();
+    //m_speed_flag_id = m_velocity_ptr -> getSpeed();
     // write the logic for coverting this speed into diffrent modes
 }
 

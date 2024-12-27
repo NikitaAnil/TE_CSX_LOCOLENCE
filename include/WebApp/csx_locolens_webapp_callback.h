@@ -1,5 +1,5 @@
 /**
-* @file     csx_locolens_webapp.h
+* @file     csx_locolens_webapp_callbach.h
 * @author   Nikita Anil
 * @brief    Header file for handling MQTT client interactions.
 *           REQ ID: SYSRS_070 - The LL-CDWS system shall utilize GIS data for 
@@ -25,18 +25,22 @@
 
 //local header file
 #include "const_config.h"
-#include "WebApp/csx_locolens_webapp_callback.h"
 
-class WebAppInterface 
+class  Callback  : public virtual mqtt::callback
 {
 public:
-    void WebAppSendThread(GPSBuffer& buffer, SwitchBuffer& switch_buffer);
+    explicit  Callback (SwitchBuffer &buf) : buffer_(buf) {}
+
+    virtual void connected(const std::string &cause) = 0;
+
+    virtual void connection_lost(const std::string &cause) = 0;
+
+    virtual void message_arrived(mqtt::const_message_ptr msg) = 0;
 
 private:
     // data member
     double switch_trigger_flag; 
-    // create an instance of the Callback class
-    //Callback cb_instance;
+    SwitchBuffer &buffer_;
 };
 
 #endif //_CSX_LOCOLENS_WEBAPP_H_
